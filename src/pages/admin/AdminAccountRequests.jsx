@@ -66,8 +66,8 @@ export default function AdminAccountRequests() {
   }) => {
     try {
       await emailjs.send(
-        "service_3osc2tp",
-        "template_938b4b9",
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         {
           to_email: toEmail,
           recipient_name: recipientName,
@@ -76,7 +76,7 @@ export default function AdminAccountRequests() {
           message_line2: messageLine2,
           message_line3: messageLine3,
         },
-        "q9NeyY6muacFLd_Vj"
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       );
     } catch (error) {
       console.error("Email error:", error);
@@ -325,7 +325,7 @@ export default function AdminAccountRequests() {
 
                         <button
                           className="reject-btn"
-                          onClick={() => rejectRequest(req.id)}
+                          onClick={() => rejectRequest(req)}
                           disabled={actionLoadingId === req.id}
                         >
                           Reject

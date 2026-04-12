@@ -20,13 +20,13 @@ export default function ForgotPassword() {
 
   const sendOtpEmail = async ({ toEmail, otpCode }) => {
     return emailjs.send(
-      "service_3osc2tp",
-      "template_spo3qb8",
+      import.meta.env.VITE_EMAILJS_SERVICE_ID,
+      import.meta.env.VITE_EMAILJS_OTP_TEMPLATE_ID,
       {
         to_email: toEmail,
         otp_code: otpCode,
       },
-      "q9NeyY6muacFLd_Vj"
+      import.meta.env.VITE_EMAILJS_PUBLIC_KEY
     );
   };
 
