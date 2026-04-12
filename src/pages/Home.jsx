@@ -1,5 +1,11 @@
 import "./Home.css";
 import { useNavigate } from "react-router-dom";
+import enrollImg from "../assets/enroll.jpg";
+import statusImg from "../assets/status.jpg";
+import profileImg from "../assets/profile.jpg";
+import news1 from "../assets/back_to_school.png";
+import news2 from "../assets/announcement.png";
+import news3 from "../assets/mcsi_notice.png";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -19,21 +25,21 @@ export default function Home() {
       {/* ACTION CARDS */}
       <section className="actions">
         <div className="card">
-          <img src="/src/assets/enroll.jpg" alt="Enroll" />
+          <img src={enrollImg} alt="Enroll" />
           <button className="card-btn" onClick={() => navigate("/enroll")}>
             Enroll Now
           </button>
         </div>
 
         <div className="card">
-          <img src="/src/assets/status.jpg" alt="Check Status" />
+          <img src={statusImg} alt="Check Status" />
           <button className="card-btn" onClick={() => navigate("/profile")}>
             Check Status
           </button>
         </div>
 
         <div className="card">
-          <img src="/src/assets/profile.jpg" alt="View Profile" />
+          <img src={profileImg} alt="View Profile" />
           <button className="card-btn" onClick={() => navigate("/profile")}>
             View Profile
           </button>
@@ -46,15 +52,15 @@ export default function Home() {
 
         <div className="news-grid">
           <div className="news-card">
-            <img src="/src/assets/back_to_school.png" alt="News 1" />
+            <img src={news1} alt="News 1" />
           </div>
 
           <div className="news-card">
-            <img src="/src/assets/announcement.png" alt="News 2" />
+            <img src={news2} alt="News 2" />
           </div>
 
           <div className="news-card">
-            <img src="/src/assets/mcsi_notice.png" alt="News 3" />
+            <img src={news3} alt="News 3" />
           </div>
         </div>
       </section>

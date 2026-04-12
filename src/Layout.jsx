@@ -9,6 +9,7 @@ import {
   FaTimes,
 } from "react-icons/fa";
 import "./Layout.css";
+import logo from "./assets/logo.png";
 
 export default function Layout({ children }) {
   const navigate = useNavigate();
@@ -35,7 +36,7 @@ export default function Layout({ children }) {
       <nav className="navbar">
         <div className="navbar-container">
           <div className="logo">
-            <img src="/src/assets/logo.png" alt="Logo" className="logo-img" />
+            <img src={logo} alt="Logo" className="logo-img" />
             <span>Maries Christian School</span>
           </div>
 
@@ -130,7 +131,7 @@ export default function Layout({ children }) {
           <div className="footer-left">
             <div className="footer-logo">
               <img
-                src="/src/assets/logo.png"
+                src={logo}
                 alt="Logo"
                 className="footer-logo-img"
               />
