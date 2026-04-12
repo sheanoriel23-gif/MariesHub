@@ -1,0 +1,214 @@
+.page-wrapper {
+  background-color: #f5f5f5; 
+  min-height: 100vh;
+  padding: 20px 0;
+  font-family: Arial, sans-serif;
+}
+
+.enrollment-form {
+  max-width: 1100px;
+  margin: 30px auto;
+  padding: 40px 30px;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1); 
+  color: #333;
+}
+
+.enrollment-form h1 {
+  text-align: center;
+  font-size: 34px;
+  color: #D32F2F; 
+  margin-bottom: 35px;
+  font-weight: 700;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 30px;
+}
+
+.form-row.three-columns {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.form-row.parent-row {
+  grid-template-columns: 2fr 1fr;
+  gap: 25px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: #000;
+  font-size: 15px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 14px 16px;
+  font-size: 14px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  background: #fff;
+  color: #333;
+  font-weight: 400;
+  transition: all 0.3s;
+}
+
+.form-group input::placeholder,
+.form-group select::placeholder,
+.form-group textarea::placeholder {
+  color: #888;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #D32F2F;
+  box-shadow: 0 4px 10px rgba(211, 47, 47, 0.2);
+  outline: none;
+  transform: translateY(-1px);
+}
+
+.next-btn {
+  display: block;
+  margin: 40px auto 0;
+  background: linear-gradient(45deg, #D32F2F, #B71C1C);
+  color: #fff;
+  font-weight: 600;
+  padding: 14px 45px;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(211,47,47,0.3);
+  transition: all 0.3s;
+}
+
+.next-btn:hover {
+  background: linear-gradient(45deg, #B71C1C, #D32F2F);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(211,47,47,0.4);
+}
+
+.status-card {
+  max-width: 650px;
+  margin: 0 auto;
+  padding: 35px 30px;
+  text-align: center;
+  background: #fff;
+  border-radius: 14px;
+  border: 1px solid #eee;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+}
+
+.status-card h2 {
+  font-size: 26px;
+  color: #222;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.status-divider {
+  width: 60px;
+  height: 3px;
+  background: #D32F2F;
+  margin: 10px auto 18px;
+  border-radius: 10px;
+}
+
+.status-line {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 6px;
+}
+
+.status-text {
+  margin-left: 6px;
+  font-weight: 700;
+  font-size: 17px;
+  text-transform: capitalize;
+}
+
+.status-pending {
+  color: #FBC02D; 
+}
+
+.status-in_review {
+  color: #1976D2; 
+}
+
+.status-approved {
+  color: #388E3C; 
+}
+
+
+.status-message {
+  font-size: 16px;
+  color: #333;
+  margin-top: 10px;
+  line-height: 1.6;
+}
+
+.status-note {
+  font-size: 14px;
+  color: #777;
+  margin-top: 8px;
+}
+
+.status-divider {
+  width: 60%;
+  height: 3px;
+  background: #d62828;
+  margin: 10px 0 15px 0;
+}
+
+.status-card .next-btn {
+  margin-top: 25px;
+}
+
+.field-error {
+  margin-top: 4px;
+  font-size: 12px;
+  color: #D32F2F;
+  font-weight: 600;
+}
+
+.input-error {
+  border: 1px solid #D32F2F !important;
+  box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.08);
+}
+
+@media (max-width: 768px) {
+  .form-row,
+  .form-row.three-columns,
+  .form-row.parent-row {
+    grid-template-columns: 1fr;
+  }
+
+  .enrollment-form {
+    padding: 25px 20px;
+  }
+
+  .enrollment-form h1 {
+    font-size: 28px;
+  }
+
+  .next-btn {
+    width: 100%;
+  }
+}

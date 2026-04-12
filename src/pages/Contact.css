@@ -1,0 +1,126 @@
+.contact-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+}
+
+.contact-page .hero {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  padding: 80px 20px 40px;
+}
+
+.contact-page .contact-content {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 40px 25px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.contact-page .contact-content h1 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: #222;
+}
+
+.contact-page .contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin-top: 20px;
+}
+
+.contact-page .contact-form input,
+.contact-page .contact-form select,
+.contact-page .contact-form textarea {
+  width: 100%;
+  padding: 16px 18px;
+  font-size: 16px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: border 0.2s, box-shadow 0.2s, background-color 0.2s;
+  box-sizing: border-box;
+}
+
+.contact-page .contact-form input::placeholder,
+.contact-page .contact-form textarea::placeholder {
+  color: #888;
+  font-size: 16px;
+}
+
+.contact-page .contact-form input:focus,
+.contact-page .contact-form select:focus,
+.contact-page .contact-form textarea:focus {
+  border-color: #D32F2F;
+  box-shadow: 0 0 6px rgba(211, 47, 47, 0.35);
+}
+
+.contact-page .contact-form input[readonly] {
+  background: #f5f5f5;
+  color: #555;
+  cursor: not-allowed;
+}
+
+.contact-page .contact-form textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+.contact-page .submit-btn {
+  width: 100%;
+  padding: 16px;
+  font-size: 16px;
+  background-color: #D32F2F;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background 0.3s, opacity 0.2s;
+}
+
+.contact-page .submit-btn:hover {
+  background-color: #B71C1C;
+}
+
+.contact-page .submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.contact-page .form-status {
+  margin-top: -8px;
+  font-size: 14px;
+  color: #222;
+  text-align: left;
+}
+
+@media (max-width: 1024px) {
+  .contact-page .contact-content {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-page .hero {
+    padding: 60px 15px 30px;
+  }
+
+  .contact-page .contact-content {
+    padding: 25px 15px;
+  }
+
+  .contact-page .contact-form input,
+  .contact-page .contact-form select,
+  .contact-page .contact-form textarea,
+  .contact-page .submit-btn {
+    font-size: 15px;
+    padding: 14px;
+  }
+}
