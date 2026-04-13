@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaCheckCircle } from "react-icons/fa";
 import { supabase } from "../supabase";
@@ -18,6 +18,83 @@ export default function EnrollStep2() {
   const [fieldErrors, setFieldErrors] = useState({});
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [step1Data, setStep1Data] = useState(null);
+
+  useEffect(() => {
+    const savedStep1 = localStorage.getItem("enrollment_step1");
+    if (savedStep1) {
+      setStep1Data(JSON.parse(savedStep1));
+    }
+  }, []);
+
+  const normalizeText = (value) =>
+    String(value || "")
+      .trim()
+      .toLowerCase()
+      .replace(/\s+/g, " ");
+
+  const getTuitionAmount = (gradeLevel) => {
+    const normalizedGrade = normalizeText(gradeLevel);
+
+    const tuitionMap = {
+      nursery: 8000,
+      kindergarten: 9000,
+      kinder: 9000,
+      "grade 1": 12000,
+      "grade 2": 12500,
+      "grade 3": 13000,
+      "grade 4": 13500,
+      "grade 5": 14000,
+      "grade 6": 14500,
+      "grade 7": 16000,
+      "grade 8": 16500,
+      "grade 9": 17000,
+      "grade 10": 17500,
+      "grade 11 - abm": 19500,
+      "grade 11 - stem": 21000,
+      "grade 11 - humss": 19000,
+      "grade 11 - gas": 18000,
+      "grade 12 - abm": 20000,
+      "grade 12 - stem": 21500,
+      "grade 12 - humss": 19500,
+      "grade 12 - gas": 18500,
+    };
+
+    return tuitionMap[normalizedGrade] || 0;
+  };
+
+  const tuitionFee = getTuitionAmount(step1Data?.grade_level);
+
+  const getPaymentBreakdown = () => {
+    if (!tuitionFee || !paymentMode) return "Please select a payment mode.";
+
+    if (paymentMode === "Cash") {
+      return `Full payment: ₱${tuitionFee.toLocaleString()}`;
+    }
+
+    if (paymentMode === "Semestral") {
+      return `2 payments of ₱${(tuitionFee / 2).toLocaleString(undefined, {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      })}`;
+    }
+
+    if (paymentMode === "Quarterly") {
+      return `4 payments of ₱${(tuitionFee / 4).toLocaleString(undefined, {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      })}`;
+    }
+
+    if (paymentMode === "Monthly") {
+      return `10 payments of ₱${(tuitionFee / 10).toLocaleString(undefined, {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      })}`;
+    }
+
+    return "-";
+  };
 
   const handleFileChange = (e, key) => {
     if (e.target.files.length > 0) {
@@ -170,32 +247,25 @@ export default function EnrollStep2() {
         .insert([
           {
             user_id: currentUser.id,
-
             enrollment_date: step1.enrollment_date,
             school_year: step1.school_year,
             grade_level: step1.grade_level,
-
             family_name: step1.family_name,
             given_name: step1.given_name,
             middle_name: step1.middle_name,
-
             date_of_birth: step1.date_of_birth,
             place_of_birth: step1.place_of_birth,
             gender: step1.gender,
-
             father_name: step1.father_name,
             father_occupation: step1.father_occupation,
             father_education: step1.father_education,
             father_contact: step1.father_contact,
-
             mother_name: step1.mother_name,
             mother_occupation: step1.mother_occupation,
             mother_education: step1.mother_education,
             mother_contact: step1.mother_contact,
-
             payment_mode: paymentMode,
             status: "pending",
-
             birth_cert_path: birthCertPath,
             report_card_path: reportCardPath,
             picture_path: picturePath,
@@ -204,14 +274,6 @@ export default function EnrollStep2() {
         ]);
 
       if (enrollmentError) throw enrollmentError;
-
-      const fullName = [
-        step1.given_name,
-        step1.middle_name,
-        step1.family_name,
-      ]
-        .filter(Boolean)
-        .join(" ");
 
       const { error: profileError } = await supabase
         .from("student_profiles")
@@ -356,7 +418,7 @@ export default function EnrollStep2() {
                     value="Cash"
                     checked={paymentMode === "Cash"}
                     onChange={handlePaymentChange}
-                  />{" "}
+                  />
                   Cash
                 </label>
                 <label>
@@ -366,7 +428,7 @@ export default function EnrollStep2() {
                     value="Semestral"
                     checked={paymentMode === "Semestral"}
                     onChange={handlePaymentChange}
-                  />{" "}
+                  />
                   Semestral
                 </label>
                 <label>
@@ -376,7 +438,7 @@ export default function EnrollStep2() {
                     value="Quarterly"
                     checked={paymentMode === "Quarterly"}
                     onChange={handlePaymentChange}
-                  />{" "}
+                  />
                   Quarterly
                 </label>
                 <label>
@@ -386,7 +448,7 @@ export default function EnrollStep2() {
                     value="Monthly"
                     checked={paymentMode === "Monthly"}
                     onChange={handlePaymentChange}
-                  />{" "}
+                  />
                   Monthly
                 </label>
               </div>
@@ -394,6 +456,26 @@ export default function EnrollStep2() {
                 <p className="field-error">{fieldErrors.payment}</p>
               )}
             </div>
+          </div>
+
+          <div className="tuition-preview">
+            <h3>Tuition Fee Preview</h3>
+            <p>
+              <strong>Grade Level:</strong> {step1Data?.grade_level || "-"}
+            </p>
+            <p>
+              <strong>Total Tuition Fee:</strong> ₱{tuitionFee.toLocaleString()}
+            </p>
+            <p>
+              <strong>Payment Mode:</strong> {paymentMode || "-"}
+            </p>
+            <p>
+              <strong>Breakdown:</strong> {getPaymentBreakdown()}
+            </p>
+            <small>
+              The total tuition fee stays the same. Only the payment breakdown
+              changes based on the selected payment mode.
+            </small>
           </div>
 
           <button className="next-btn" type="submit" disabled={loading}>
