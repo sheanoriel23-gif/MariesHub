@@ -13,22 +13,22 @@ body {
   inset: 0;
   width: 100%;
   height: 100vh;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  padding: 0 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 60px;
   gap: 40px;
   overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .overlay {
   position: absolute;
   inset: 0;
-  background: rgba(255, 255, 255, 0.55);
   z-index: 1;
+  background: rgba(255, 255, 255, 0.55);
 }
 
 .login-left {
@@ -39,18 +39,18 @@ body {
 }
 
 .login-left h1 {
+  margin-bottom: 18px;
+  font-family: Georgia, "Times New Roman", serif;
   font-size: 56px;
   font-weight: 700;
   color: #b71c1c;
-  margin-bottom: 18px;
-  font-family: Georgia, "Times New Roman", serif;
 }
 
 .login-left p {
+  max-width: 470px;
   font-size: 18px;
   line-height: 1.7;
   color: #333;
-  max-width: 470px;
 }
 
 .login-card {
@@ -58,34 +58,35 @@ body {
   z-index: 2;
   width: 100%;
   max-width: 430px;
-  background: #d32f2f;
-  border-radius: 28px;
   padding: 42px 32px;
-  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  background: #d32f2f;
+  border-radius: 28px;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.25);
 }
 
 .login-logo {
   width: 120px;
   height: 120px;
+  margin-bottom: 22px;
   object-fit: cover;
   border-radius: 50%;
   border: 3px solid rgba(255, 255, 255, 0.35);
-  margin-bottom: 22px;
   background: #fff;
 }
 
 .login-card h1 {
-  color: #fff;
-  font-size: 34px;
   margin-bottom: 26px;
   font-family: Georgia, "Times New Roman", serif;
+  font-size: 34px;
+  color: #fff;
 }
 
-.login-card form {
+.login-card form,
+.popup-box form {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -94,28 +95,24 @@ body {
 .login-card input {
   width: 100%;
   height: 50px;
+  margin-bottom: 16px;
   padding: 0 15px;
   border: none;
   border-radius: 12px;
   outline: none;
   font-size: 15px;
-  background: #f5f5f5;
   color: #222;
+  background: #f5f5f5;
   transition: 0.2s ease;
 }
 
 .login-card input:focus {
-  background: #ffffff;
+  background: #fff;
   box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.35);
 }
 
 .login-card input::placeholder {
   color: #777;
-}
-
-.login-card > form > input,
-.login-card form > input {
-  margin-bottom: 16px;
 }
 
 .password-wrapper {
@@ -130,36 +127,42 @@ body {
 }
 
 .forgot-text {
-  color: #ffe9e9;
   font-size: 13px;
   font-weight: 500;
-  cursor: pointer;
-  transition: 0.2s ease;
+  color: #ffe9e9;
   text-align: right;
+  cursor: pointer;
   user-select: none;
+  transition: 0.2s ease;
 }
 
 .forgot-text:hover {
-  color: #ffffff;
+  color: #fff;
   text-decoration: underline;
+}
+
+.login-btn,
+.apply-btn,
+.submit-btn,
+.cancel-btn {
+  border: none;
+  border-radius: 999px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
 }
 
 .login-btn,
 .apply-btn {
   width: 100%;
   height: 48px;
-  border: none;
-  border-radius: 999px;
   font-size: 15px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.25s ease;
 }
 
 .login-btn {
-  background: #ffffff;
-  color: #c62828;
   margin-bottom: 12px;
+  color: #c62828;
+  background: #fff;
 }
 
 .login-btn:hover {
@@ -178,47 +181,42 @@ body {
 }
 
 .apply-btn {
+  color: #fff;
   background: transparent;
-  color: #ffffff;
-  border: 2px solid #ffffff;
+  border: 2px solid #fff;
 }
 
 .apply-btn:hover {
-  background: rgba(255, 255, 255, 0.12);
   transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.12);
 }
 
 .popup-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.45);
+  z-index: 999;
+  padding: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 999;
-  padding: 20px;
+  background: rgba(0, 0, 0, 0.45);
 }
 
 .popup-box {
   width: 100%;
   max-width: 440px;
-  background: #ffffff;
-  border-radius: 22px;
   padding: 30px 24px;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.28);
   text-align: center;
+  background: #fff;
+  border-radius: 22px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.28);
 }
 
 .popup-box h2 {
-  font-size: 28px;
-  color: #d32f2f;
   margin-bottom: 20px;
   font-family: Georgia, "Times New Roman", serif;
-}
-
-.popup-box form {
-  display: flex;
-  flex-direction: column;
+  font-size: 28px;
+  color: #d32f2f;
 }
 
 .popup-box input {
@@ -241,26 +239,23 @@ body {
 }
 
 .popup-buttons {
+  width: 100%;
+  margin-top: 8px;
   display: flex;
-  gap: 10px;
-  margin-top: 6px;
+  gap: 12px;
 }
 
 .submit-btn,
 .cancel-btn {
   flex: 1;
+  min-width: 0;
   height: 45px;
-  border: none;
-  border-radius: 999px;
   font-size: 14px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: 0.2s ease;
 }
 
 .submit-btn {
-  background: #d32f2f;
   color: #fff;
+  background: #d32f2f;
 }
 
 .submit-btn:hover {
@@ -268,8 +263,8 @@ body {
 }
 
 .cancel-btn {
-  background: #ececec;
   color: #333;
+  background: #ececec;
 }
 
 .cancel-btn:hover {
@@ -287,8 +282,8 @@ body {
   }
 
   .login-left p {
-    font-size: 20px;
     max-width: 530px;
+    font-size: 20px;
   }
 
   .login-card {
@@ -328,8 +323,8 @@ body {
   }
 
   .login-left p {
-    font-size: 16px;
     max-width: 400px;
+    font-size: 16px;
   }
 
   .login-card {
@@ -385,10 +380,10 @@ body {
     position: relative;
     min-height: 100vh;
     height: auto;
+    padding: 36px 18px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 36px 18px;
     gap: 24px;
     overflow-y: auto;
   }
@@ -400,13 +395,13 @@ body {
   }
 
   .login-left h1 {
-    font-size: 36px;
     margin-bottom: 10px;
+    font-size: 36px;
   }
 
   .login-left p {
-    font-size: 14px;
     max-width: 100%;
+    font-size: 14px;
   }
 
   .login-card {
@@ -421,8 +416,8 @@ body {
   }
 
   .login-card h1 {
-    font-size: 28px;
     margin-bottom: 22px;
+    font-size: 28px;
   }
 
   .popup-box {
@@ -451,8 +446,8 @@ body {
   }
 
   .login-card {
-    border-radius: 22px;
     padding: 24px 16px;
+    border-radius: 22px;
   }
 
   .login-card h1 {
@@ -473,7 +468,19 @@ body {
     font-size: 12px;
   }
 
+  .popup-box {
+    max-width: 100%;
+    padding: 20px 16px;
+    border-radius: 18px;
+  }
+
   .popup-buttons {
     flex-direction: column;
+    gap: 10px;
+  }
+
+  .submit-btn,
+  .cancel-btn {
+    width: 100%;
   }
 }
